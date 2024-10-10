@@ -1,0 +1,111 @@
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.dashboard {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden automáticamente en diferentes líneas si no hay espacio */
+    justify-content: center;
+}
+
+/* Estilo de los módulos */
+.module {
+    width: 250px;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 2px solid #90a4ae;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        background-color: #eceff1;
+    }
+
+    /* Estilos del texto */
+    .module h2 {
+        margin: 15px 0;
+        color: #37474f;
+    }
+
+    .module p {
+        font-size: 14px;
+        color: #607d8b;
+    }
+
+/* Estilos del botón */
+button {
+    background-color: #1e88e5;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+    button:hover {
+        background-color: #1565c0;
+    }
+
+/* Iconos */
+.material-icons {
+    font-size: 50px;
+    color: #1e88e5;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.module:hover .material-icons {
+    color: #1565c0;
+}
+
+/* Media Queries para hacer el diseño responsive */
+@media only screen and (max-width: 1200px) {
+    .module {
+        width: 220px; /* Ajuste de tamaño en pantallas grandes como tablets */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard {
+        flex-direction: column; /* En dispositivos medianos, como tablets, muestra en columnas */
+        align-items: center;
+    }
+
+    .module {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .module {
+        width: 90%; /* En móviles, ocupa el 90% del ancho de la pantalla */
+        margin-bottom: 20px; /* Espacio entre módulos */
+    }
+
+        .module:hover {
+            transform: none; /* Desactivar el efecto hover en dispositivos táctiles */
+        }
+
+    .material-icons {
+        font-size: 40px; /* Ajustar tamaño de iconos en móviles */
+    }
+
+    button {
+        width: 100%; /* Botones ocupan el ancho del módulo */
+    }
+}
