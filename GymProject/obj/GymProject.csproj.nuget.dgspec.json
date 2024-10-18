@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jeanc\\source\\repos\\GymProject\\GymProject\\GymProject.csproj": {}
+    "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\GymProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jeanc\\source\\repos\\GymProject\\GymProject\\GymProject.csproj": {
+    "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\GymProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jeanc\\source\\repos\\GymProject\\GymProject\\GymProject.csproj",
+        "projectUniqueName": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\GymProject.csproj",
         "projectName": "GymProject",
-        "projectPath": "C:\\Users\\jeanc\\source\\repos\\GymProject\\GymProject\\GymProject.csproj",
+        "projectPath": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\GymProject.csproj",
         "packagesPath": "C:\\Users\\jeanc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jeanc\\source\\repos\\GymProject\\GymProject\\obj\\",
+        "outputPath": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jeanc\\AppData\\Roaming\\NuGet\\NuGet.Config",
