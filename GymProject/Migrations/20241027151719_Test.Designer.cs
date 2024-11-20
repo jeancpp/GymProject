@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymProject.Migrations
 {
     [DbContext(typeof(GymDbContext))]
-    [Migration("20241010040208_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20241027151719_Test")]
+    partial class Test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

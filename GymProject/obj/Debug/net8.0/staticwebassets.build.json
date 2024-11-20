@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ePhPqaNXBM5NshmxbxA7o0uM7KtNhly8CshoQdJ0t3Y=",
+  "Hash": "U710Zy+Bw/LUApd4S/cZzzs8lCZyG2rrrWfiC7wajms=",
   "Source": "GymProject",
   "BasePath": "_content/GymProject",
   "Mode": "Default",
@@ -9496,6 +9496,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\vendor\\tinymce\\tinymce.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\css\\Categorias\\index.css",
+      "SourceId": "GymProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\",
+      "BasePath": "_content/GymProject",
+      "RelativePath": "css/Categorias/index.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Categorias\\index.css"
     },
     {
       "Identity": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\css\\Dashboard.css",

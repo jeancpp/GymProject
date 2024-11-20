@@ -5,7 +5,7 @@
 namespace GymProject.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,7 @@ namespace GymProject.Migrations
                 {
                     IdCategoria = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(50)", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,7 +29,7 @@ namespace GymProject.Migrations
                 {
                     IdEjercicio = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(100)", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,8 +42,8 @@ namespace GymProject.Migrations
                 {
                     IdRutina = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(100)", nullable: false),
-                    Descripcion = table.Column<string>(type: "varchar(max)", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,21 +54,21 @@ namespace GymProject.Migrations
                 name: "CategoriasEjercicios",
                 columns: table => new
                 {
-                    IdCategoria = table.Column<int>(type: "int", nullable: false),
-                    IdEjercicio = table.Column<int>(type: "int", nullable: false)
+                    CategoriasIdCategoria = table.Column<int>(type: "int", nullable: false),
+                    EjerciciosIdEjercicio = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoriasEjercicios", x => new { x.IdCategoria, x.IdEjercicio });
+                    table.PrimaryKey("PK_CategoriasEjercicios", x => new { x.CategoriasIdCategoria, x.EjerciciosIdEjercicio });
                     table.ForeignKey(
                         name: "FK_CategoriasEjercicios_Categorias_CategoriasIdCategoria",
-                        column: x => x.IdCategoria,
+                        column: x => x.CategoriasIdCategoria,
                         principalTable: "Categorias",
                         principalColumn: "IdCategoria",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CategoriasEjercicios_Ejercicios_EjerciciosIdEjercicio",
-                        column: x => x.IdEjercicio,
+                        column: x => x.EjerciciosIdEjercicio,
                         principalTable: "Ejercicios",
                         principalColumn: "IdEjercicio",
                         onDelete: ReferentialAction.Cascade);
@@ -78,21 +78,21 @@ namespace GymProject.Migrations
                 name: "CategoriasRutinas",
                 columns: table => new
                 {
-                    IdCategoria = table.Column<int>(type: "int", nullable: false),
-                    IdRutina = table.Column<int>(type: "int", nullable: false)
+                    CategoriasIdCategoria = table.Column<int>(type: "int", nullable: false),
+                    RutinasIdRutina = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoriasRutinas", x => new { x.IdCategoria, x.IdRutina });
+                    table.PrimaryKey("PK_CategoriasRutinas", x => new { x.CategoriasIdCategoria, x.RutinasIdRutina });
                     table.ForeignKey(
                         name: "FK_CategoriasRutinas_Categorias_CategoriasIdCategoria",
-                        column: x => x.IdCategoria,
+                        column: x => x.CategoriasIdCategoria,
                         principalTable: "Categorias",
                         principalColumn: "IdCategoria",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CategoriasRutinas_Rutinas_RutinasIdRutina",
-                        column: x => x.IdRutina,
+                        column: x => x.RutinasIdRutina,
                         principalTable: "Rutinas",
                         principalColumn: "IdRutina",
                         onDelete: ReferentialAction.Cascade);
@@ -101,12 +101,12 @@ namespace GymProject.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_CategoriasEjercicios_EjerciciosIdEjercicio",
                 table: "CategoriasEjercicios",
-                column: "IdEjercicio");
+                column: "EjerciciosIdEjercicio");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoriasRutinas_RutinasIdRutina",
                 table: "CategoriasRutinas",
-                column: "IdRutina");
+                column: "RutinasIdRutina");
         }
 
         /// <inheritdoc />

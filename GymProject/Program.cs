@@ -1,4 +1,5 @@
 using GymProject.Data;
+using GymProject.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<GymDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("GymDbConnectionString")));
+
+builder.Services.AddScoped<ICategoriasRepository, CategoriasRepository>();
+builder.Services.AddScoped<IEjerciciosRepository, EjerciciosRepository>();
 
 var app = builder.Build();
 

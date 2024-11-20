@@ -1993,6 +1993,10 @@
       "PackagePath": "staticwebassets\\Assets\\vendor\\tinymce\\tinymce.min.js"
     },
     {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\css\\Categorias\\index.css",
+      "PackagePath": "staticwebassets\\css\\Categorias\\index.css"
+    },
+    {
       "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\css\\Dashboard.css",
       "PackagePath": "staticwebassets\\css\\Dashboard.css"
     },

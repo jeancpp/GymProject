@@ -1,111 +1,84 @@
-/* Estilos generales */
-body {
-    font-family: 'Roboto', sans-serif;
-    background: #e0e0e0;
+.main {
+    min-height: 80vh;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
 }
 
 .dashboard {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap; /* Permite que los elementos se acomoden automáticamente en diferentes líneas si no hay espacio */
-    justify-content: center;
-}
-
-/* Estilo de los módulos */
-.module {
-    width: 250px;
-    padding: 30px;
-    background-color: #ffffff;
-    border: 2px solid #90a4ae;
-    border-radius: 15px;
+    width: 90%;
+    max-width: 1200px;
     text-align: center;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
-    .module:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        background-color: #eceff1;
-    }
+.dashboard-title {
+    color: #1a73e8;
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    font-weight: bold;
+}
 
-    /* Estilos del texto */
-    .module h2 {
-        margin: 15px 0;
-        color: #37474f;
-    }
+/* Estilos de los contenedores de módulos */
+.modules-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
 
-    .module p {
-        font-size: 14px;
-        color: #607d8b;
-    }
-
-/* Estilos del botón */
-button {
-    background-color: #1e88e5;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+.module-card {
+    flex: 1 1 calc(33.333% - 40px);
+    max-width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
 }
 
-    button:hover {
-        background-color: #1565c0;
+    .module-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     }
 
-/* Iconos */
+    .module-card h2 {
+        color: #1a73e8;
+        margin: 15px 0;
+    }
+
+    .module-card p {
+        color: #6c757d;
+        margin-bottom: 10px;
+    }
+
 .material-icons {
-    font-size: 50px;
-    color: #1e88e5;
+    font-size: 48px;
+    color: #1a73e8;
     margin-bottom: 10px;
-    transition: color 0.3s;
 }
 
-.module:hover .material-icons {
-    color: #1565c0;
-}
-
-/* Media Queries para hacer el diseño responsive */
-@media only screen and (max-width: 1200px) {
-    .module {
-        width: 220px; /* Ajuste de tamaño en pantallas grandes como tablets */
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .dashboard {
-        flex-direction: column; /* En dispositivos medianos, como tablets, muestra en columnas */
+/* Estilos Responsive */
+@media (max-width: 768px) {
+    .modules-container {
+        flex-direction: column;
         align-items: center;
     }
 
-    .module {
-        width: 300px;
+    .module-card {
+        flex: 1 1 100%;
+        max-width: 90%;
     }
 }
 
-@media only screen and (max-width: 480px) {
-    .module {
-        width: 90%; /* En móviles, ocupa el 90% del ancho de la pantalla */
-        margin-bottom: 20px; /* Espacio entre módulos */
+@media (max-width: 480px) {
+    .dashboard-title {
+        font-size: 2rem;
     }
-
-        .module:hover {
-            transform: none; /* Desactivar el efecto hover en dispositivos táctiles */
-        }
 
     .material-icons {
-        font-size: 40px; /* Ajustar tamaño de iconos en móviles */
-    }
-
-    button {
-        width: 100%; /* Botones ocupan el ancho del módulo */
+        font-size: 36px;
     }
 }
