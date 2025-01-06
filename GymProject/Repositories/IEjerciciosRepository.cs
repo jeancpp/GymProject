@@ -7,5 +7,7 @@ namespace GymProject.Repositories
         Task<IEnumerable<Ejercicios>>GetAllAsync();
         Task<Ejercicios> GetAsync(int id);
         Task<Ejercicios> AddAsync(Ejercicios ejercicio);
+        Task<Ejercicios> UpdateAsync(Ejercicios ejercicio);
+
     }
 }

@@ -1,0 +1,34 @@
+.main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard {
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.dashboard-title {
+    color: #1a73e8;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.material-icons {
+    font-size: 24px;
+}
+
+.modal-header .material-icons {
+    color: #1a73e8;
+}
+

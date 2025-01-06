@@ -30,6 +30,8 @@
 
     <!-- Template Main CSS File -->
     <link href="@Url.Content("~/assets/css/style.css")" rel="stylesheet" />
+    <link href="~/css/select2.min.css" rel="stylesheet" />
+    <link href="~/css/datatables.datatables.css" rel="stylesheet" />
 </head>
 <body>
     <!-- ======= Header ======= -->
@@ -137,9 +139,9 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Rutinas" asp-action="Index">
                     <i class="bi bi-people"></i>
-                    <span>Clientes</span>
+                    <span>Rutinas</span>
                 </a>
             </li>
 
@@ -151,6 +153,21 @@
         @RenderBody()
     </main>
 
+    <style>
+        .select2-container--default .select2-selection--single {
+            height: 35px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+            .select2-container--default .select2-selection--single .select2-selection__rendered {
+                line-height: 33px;
+            }
+
+            .select2-container--default .select2-selection--single .select2-selection__arrow {
+                top: 5px;
+            }
+    </style>
 
     <script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
     <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.bundle.min.js")"></script>
@@ -170,7 +187,8 @@
     *@
     <script src="@Url.Content("~/assets/vendor/tinymce/tinymce.min.js")"></script>
     <script src="@Url.Content("~/assets/vendor/php-email-form/validate.js")"></script>
-
+    <script src="~/js/select2.min.js"></script>
+    <script src="~/js/datatables.js"></script>
 
     <!-- Template Main JS File -->
     <script src="@Url.Content("~/assets/js/main.js")"></script>

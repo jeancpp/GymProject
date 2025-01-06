@@ -1,0 +1,59 @@
+﻿
+<head>
+    <link href="~/css/Rutinas/index.css" rel="stylesheet" />
+
+</head>
+
+
+<main id="main" class="main">
+    <div class="dashboard">
+        <h1 class="dashboard-title">Gestión de Rutinas</h1>
+        <button class="btn btn-outline-primary mb-4" data-toggle="modal" data-target="#modalAgregar" id="btnCrear">
+            <span class="material-icons">add</span> Crear rutina
+        </button>
+    </div>
+
+    <!-- Modal para agregar nueva rutina -->
+    <div class="modal modal-lg modal-blur fade" id="modalAgregar" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <span class="material-icons">add_circle</span> Agregar Nuevo Ejercicio
+                    </h5>
+
+                </div>
+                <form method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de la rutina</label>
+                            <input type="text" class="form-control" id="txtNombre" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" class="form-control" id="txtDescripcion" />
+                        </div>
+
+                        <div id="contenedorSets"></div>
+                        <button type="button" id="btnAgregarSet" class="btn btn-outline-primary mt-3">
+                            Agregar Set
+                        </button>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="~/js/Rutinas/rutinas.js"></script>

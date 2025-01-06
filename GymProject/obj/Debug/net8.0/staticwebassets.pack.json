@@ -2001,12 +2001,48 @@
       "PackagePath": "staticwebassets\\css\\Dashboard.css"
     },
     {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\css\\Rutinas\\index.css",
+      "PackagePath": "staticwebassets\\css\\Rutinas\\index.css"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\css\\dataTables.dataTables.css",
+      "PackagePath": "staticwebassets\\css\\dataTables.dataTables.css"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\css\\select2.min.css",
+      "PackagePath": "staticwebassets\\css\\select2.min.css"
+    },
+    {
       "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\Categorias\\categorias.js",
+      "PackagePath": "staticwebassets\\js\\Categorias\\categorias.js"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\Ejercicios\\ejercicios.js",
+      "PackagePath": "staticwebassets\\js\\Ejercicios\\ejercicios.js"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\Rutinas\\rutinas.js",
+      "PackagePath": "staticwebassets\\js\\Rutinas\\rutinas.js"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\dataTable.es.js",
+      "PackagePath": "staticwebassets\\js\\dataTable.es.js"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\dataTables.js",
+      "PackagePath": "staticwebassets\\js\\dataTables.js"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\select2.min.js",
+      "PackagePath": "staticwebassets\\js\\select2.min.js"
     },
     {
       "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\site.js",
