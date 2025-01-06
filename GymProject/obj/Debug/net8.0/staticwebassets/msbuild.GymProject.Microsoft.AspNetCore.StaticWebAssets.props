@@ -8080,12 +8080,20 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\GymProject.bundle.scp.css))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\Categorias\categorias.js))">
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\Ejercicios\Index.js))">
+>>>>>>> e43cc9316be5d4c755c3c830e4d37d769ea33c5e
       <SourceType>Package</SourceType>
       <SourceId>GymProject</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/GymProject</BasePath>
+<<<<<<< HEAD
       <RelativePath>js/Categorias/categorias.js</RelativePath>
+=======
+      <RelativePath>js/Ejercicios/Index.js</RelativePath>
+>>>>>>> e43cc9316be5d4c755c3c830e4d37d769ea33c5e
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -8094,6 +8102,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+<<<<<<< HEAD
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\Categorias\categorias.js))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\dataTable.es.js))">
@@ -8175,6 +8184,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\select2.min.js))</OriginalItemSpec>
+=======
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\Ejercicios\Index.js))</OriginalItemSpec>
+>>>>>>> e43cc9316be5d4c755c3c830e4d37d769ea33c5e
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\site.js))">
       <SourceType>Package</SourceType>

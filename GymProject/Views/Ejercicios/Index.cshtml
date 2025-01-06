@@ -52,6 +52,14 @@
                                         </button>
                                     </td>
 
+                                    <td>
+                                        <a href="#" class="btn btn-outline-primary editar-ejercicio" data-toggle="modal" data-target="#modalEditar"
+                                           data-id="@ejercicio.IdEjercicio" data-nombre="@ejercicio.Nombre"
+                                           data-categorias='@System.Text.Json.JsonSerializer.Serialize(ejercicio.Categorias.Select(c => c.Nombre))'>
+                                            Editar
+                                        </a>
+                                    </td>
+
                                 </tr>
                             }
                         </tbody>
@@ -81,6 +89,39 @@
                         <div class="mb-3">
                             <label asp-for="Nombre" class="form-label">Ejercicio</label>
                             <input type="text" asp-for="Nombre" class="form-control" id="txtNombre" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Categorias" class="form-label">Categorias</label>
+                            <select class="form-select" asp-items="@Model.Categorias" asp-for="CategoriaSeleccionada" multiple>
+                                <option selected disabled>Selecciona una categoria</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar ejercicio -->
+    <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarModalLabel">
+                        <span class="material-icons">edit</span> Editar Ejercicio
+                    </h5>
+                </div>
+                <form method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="txtEditarNombre" class="form-label">Ejercicio</label>
+                            <input type="text" class="form-control" id="txtEditarNombre" name="Nombre" />
                         </div>
 
                         <div class="mb-3">
@@ -136,7 +177,6 @@
     </div>
 
 </main>
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

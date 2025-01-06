@@ -4039,19 +4039,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jeanc\\.nuget\\packages\\": {}
+    "C:\\Users\\jean.pacheco\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\GymProject.csproj",
+      "projectUniqueName": "C:\\Users\\jean.pacheco\\Source\\Repos\\GymProject\\GymProject\\GymProject.csproj",
       "projectName": "GymProject",
-      "projectPath": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\GymProject.csproj",
-      "packagesPath": "C:\\Users\\jeanc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\obj\\",
+      "projectPath": "C:\\Users\\jean.pacheco\\Source\\Repos\\GymProject\\GymProject\\GymProject.csproj",
+      "packagesPath": "C:\\Users\\jean.pacheco\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jean.pacheco\\Source\\Repos\\GymProject\\GymProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jeanc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jean.pacheco\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4113,7 +4113,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

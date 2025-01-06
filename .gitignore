@@ -3,3 +3,12 @@
 ################################################################################
 
 /.vs
+/GymProject/bin/Debug/net8.0/appsettings.json
+/GymProject/bin/Debug/net8.0/GymProject.dll
+/GymProject/bin/Debug/net8.0/GymProject.exe
+/GymProject/bin/Debug/net8.0/GymProject.pdb
+/GymProject/bin/Debug/net8.0/GymProject.staticwebassets.runtime.json
+/GymProject/obj/GymProject.csproj.nuget.dgspec.json
+/GymProject/obj/GymProject.csproj.nuget.g.props
+/GymProject/obj/project.assets.json
+/GymProject/obj/project.nuget.cache

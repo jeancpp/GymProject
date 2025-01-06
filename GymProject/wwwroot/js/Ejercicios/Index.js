@@ -10,9 +10,20 @@
             // Obtén los datos del botón
             const id = this.getAttribute('data-id');
             const nombre = this.getAttribute('data-nombre');
+            const categorias = JSON.parse(this.dataset.categorias); // Convertir JSON a arreglo
 
-            // Aquí puedes usar estos valores para mostrar el modal
-            console.log('ID:', id, 'Nombre:', nombre);
+            let datos = { id, nombre, categorias }
+            abrirModalEditar(datos)
+
         });
     });
 });
+
+function abrirModalEditar(datos) {
+
+    console.log(datos);
+
+    $('#txtEditarNombre').val(datos.nombre);
+    
+
+}
