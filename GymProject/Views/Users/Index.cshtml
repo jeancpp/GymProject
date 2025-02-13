@@ -1,0 +1,104 @@
+﻿@model GymProject.Models.ViewModels.UsersVM
+
+<head>
+    <link href="~/css/categorias/index.css" rel="stylesheet" />
+</head>
+
+<main id="main" class="main">
+    <div class="dashboard">
+        <h1 class="dashboard-title">Gestión de Usuarios</h1>
+        <button class="btn btn-outline-primary mb-4" data-toggle="modal" id="btnAgregar">
+            <span class="material-icons">add</span> Agregar Usuario
+        </button>
+
+        <div class="category-card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <span class="material-icons">fitness_center</span> Usuarios
+                </h5>
+                @if (Model != null && Model.Users.Any())
+                {
+                    <table class="table datatable" id="tablaUsuarios">
+                        <thead>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>Email</td>
+                                <td>Rol</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var usuario in Model.Users)
+                            {
+                                <tr>
+                                    <td>@usuario.Username</td>
+                                    <td>@usuario.Email</td>
+                                    <td>@usuario.Rol</td>
+                                    <td>
+                                        <button type="button"
+                                                class="btnEditarUsuario btn btn-primary"
+                                                data-id="@usuario.Id"
+                                                data-nombre="@usuario.Username"
+                                                data-email="@usuario.Email">
+                                            Editar
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p class="no-categories">No existen usuarios registrados</p>
+
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modal para agregar nuevo ejercicio -->
+<div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <span class="material-icons">add_circle</span> Agregar Nuevo Usuario
+                </h5>
+
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="UserName" class="form-label">Nombre de usuario</label>
+                        <input type="text" asp-for="UserName" class="form-control" id="txtNombre" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">Correo</label>
+                        <input type="email" asp-for="Email" class="form-control" id="txtCorreo" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label">Contraseña</label>
+                        <input type="password" asp-for="Password" class="form-control" id="txtCon" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Roles" class="form-label">Rol</label>
+                        <select class="form-control" asp-items="@Model.Roles" asp-for="rolSeleccionado" id="ddlTipoUsuario" required>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/js/usuarios/usuarios.js"></script>

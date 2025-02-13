@@ -2,11 +2,13 @@
 using GymProject.Models.Domain;
 using GymProject.Models.ViewModels;
 using GymProject.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GymProject.Controllers
 {
+    [Authorize(Roles = "Admin, Entrenador")]
     public class EjerciciosController : Controller
     {
         private readonly IEjerciciosRepository ejerciciosRepository;
@@ -36,27 +38,31 @@ namespace GymProject.Controllers
         [ActionName("Index")]
         public async Task<IActionResult> Index(EjerciciosVM ejerciciosVM)
         {
-            var ejercicio = new Ejercicios
+            if (ModelState.IsValid)
             {
-                Nombre = ejerciciosVM.Nombre,
-            };
-
-            var categoriasSeleccionadas = new List<Categorias>();
-
-            foreach (var id in ejerciciosVM.CategoriaSeleccionada)
-            {
-                var idCategoria = int.Parse(id);
-                var categoriaExistente = await categoriasRepository.GetAsync(idCategoria);
-
-                if (categoriaExistente != null)
+                var ejercicio = new Ejercicios
                 {
-                    categoriasSeleccionadas.Add(categoriaExistente);
+                    Nombre = ejerciciosVM.Nombre,
+                };
+
+                var categoriasSeleccionadas = new List<Categorias>();
+
+                foreach (var id in ejerciciosVM.CategoriaSeleccionada)
+                {
+                    var idCategoria = int.Parse(id);
+                    var categoriaExistente = await categoriasRepository.GetAsync(idCategoria);
+
+                    if (categoriaExistente != null)
+                    {
+                        categoriasSeleccionadas.Add(categoriaExistente);
+                    }
+
                 }
+                ejercicio.Categorias = categoriasSeleccionadas;
+
+                await ejerciciosRepository.AddAsync(ejercicio);
 
             }
-            ejercicio.Categorias = categoriasSeleccionadas;
-
-            await ejerciciosRepository.AddAsync(ejercicio);
 
             return RedirectToAction("Index");
         }

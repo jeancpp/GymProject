@@ -1,9 +1,13 @@
 using GymProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace GymProject.Controllers
 {
+    [Authorize]
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -32,3 +32,93 @@
     color: #1a73e8;
 }
 
+/* General */
+.container {
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff; /* Blanco limpio */
+    border-radius: 16px;
+}
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+/* Encabezado con gradiente */
+.card-header {
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Azul degradado */
+    color: white;
+    padding: 1rem;
+    border-radius: 16px 16px 0 0;
+}
+
+    .card-header .bi {
+        opacity: 0.8;
+    }
+
+/* Cuerpo */
+.card-body {
+    padding: 1rem 1.5rem;
+}
+
+    .card-body p {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+    .card-body h6 {
+        margin-bottom: 0.8rem;
+        font-weight: bold;
+    }
+
+    /* Ejercicios y sets */
+    .card-body ul {
+        padding-left: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+        .card-body ul li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+            .card-body ul li:last-child {
+                border-bottom: none;
+            }
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.3em 0.6em;
+    border-radius: 8px;
+}
+
+/* Footer */
+.card-footer {
+    padding: 0.8rem 1.5rem;
+}
+
+.btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+.btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: white;
+    }

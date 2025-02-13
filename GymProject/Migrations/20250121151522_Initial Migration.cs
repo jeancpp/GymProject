@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace GymProject.Migrations
 {
     /// <inheritdoc />
-    public partial class Test : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,7 +44,8 @@ namespace GymProject.Migrations
                     IdRutina = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -75,26 +77,50 @@ namespace GymProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoriasRutinas",
+                name: "Sets",
                 columns: table => new
                 {
-                    CategoriasIdCategoria = table.Column<int>(type: "int", nullable: false),
-                    RutinasIdRutina = table.Column<int>(type: "int", nullable: false)
+                    IdSet = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Series = table.Column<int>(type: "int", nullable: false),
+                    IdRutina = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoriasRutinas", x => new { x.CategoriasIdCategoria, x.RutinasIdRutina });
+                    table.PrimaryKey("PK_Sets", x => x.IdSet);
                     table.ForeignKey(
-                        name: "FK_CategoriasRutinas_Categorias_CategoriasIdCategoria",
-                        column: x => x.CategoriasIdCategoria,
-                        principalTable: "Categorias",
-                        principalColumn: "IdCategoria",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CategoriasRutinas_Rutinas_RutinasIdRutina",
-                        column: x => x.RutinasIdRutina,
+                        name: "FK_Sets_Rutinas_IdRutina",
+                        column: x => x.IdRutina,
                         principalTable: "Rutinas",
                         principalColumn: "IdRutina",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SetEjercicios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdSet = table.Column<int>(type: "int", nullable: false),
+                    IdEjercicio = table.Column<int>(type: "int", nullable: false),
+                    Repeticiones = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SetEjercicios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SetEjercicios_Ejercicios_IdEjercicio",
+                        column: x => x.IdEjercicio,
+                        principalTable: "Ejercicios",
+                        principalColumn: "IdEjercicio",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SetEjercicios_Sets_IdSet",
+                        column: x => x.IdSet,
+                        principalTable: "Sets",
+                        principalColumn: "IdSet",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -104,9 +130,19 @@ namespace GymProject.Migrations
                 column: "EjerciciosIdEjercicio");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoriasRutinas_RutinasIdRutina",
-                table: "CategoriasRutinas",
-                column: "RutinasIdRutina");
+                name: "IX_SetEjercicios_IdEjercicio",
+                table: "SetEjercicios",
+                column: "IdEjercicio");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SetEjercicios_IdSet",
+                table: "SetEjercicios",
+                column: "IdSet");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sets_IdRutina",
+                table: "Sets",
+                column: "IdRutina");
         }
 
         /// <inheritdoc />
@@ -116,13 +152,16 @@ namespace GymProject.Migrations
                 name: "CategoriasEjercicios");
 
             migrationBuilder.DropTable(
-                name: "CategoriasRutinas");
+                name: "SetEjercicios");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
 
             migrationBuilder.DropTable(
                 name: "Ejercicios");
 
             migrationBuilder.DropTable(
-                name: "Categorias");
+                name: "Sets");
 
             migrationBuilder.DropTable(
                 name: "Rutinas");

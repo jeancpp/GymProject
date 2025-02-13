@@ -62,7 +62,8 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label asp-for="Nombre" class="form-label">Categoría</label>
-                            <input type="text" asp-for="Nombre" class="form-control" id="txtNombre" />
+                            <input type="text" asp-for="Nombre" class="form-control" id="txtNombre" required/>
+                            <span class="text-danger" asp-validation-for="Nombre"></span>
                         </div>
                     </div>
                     <div class="modal-footer">

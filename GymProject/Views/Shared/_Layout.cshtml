@@ -1,4 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject SignInManager<IdentityUser> user
+
+@{
+    // Obtener todos los roles del usuario
+    var rolesUsuario = User.Claims
+        .Where(c => c.Type == ClaimTypes.Role)
+        .Select(c => c.Value)
+        .ToList();
+
+    // Si el usuario tiene el rol "Admin", mostrar "Admin"
+    var rol = rolesUsuario.Contains("Admin") ? "Admin" : rolesUsuario.FirstOrDefault();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -16,7 +31,6 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="@Url.Content("~/assets/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
@@ -54,13 +68,27 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="@Url.Content("~/assets/img/profile-img.jpg")" alt="Profile" class="rounded-circle" />
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">
+                            @if(user.IsSignedIn(User))
+                            {
+                                @User.Identity?.Name
+                            }
+                            </span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
+                            @if (user.IsSignedIn(User))
+                            {
+                                <h6>@User.Identity?.Name</h6>
+                                <span>@rol</span>
+                            }
+                            else
+                            {
+                                <h6>Kevin Anderson</h6>
+                                <span>Web Designer</span>
+
+                            }
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -87,9 +115,11 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                            <a class="dropdown-item d-flex align-items-center" 
+                            asp-controller="Login"
+                            asp-action="Login">
                                 <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
+                                <span>Login</span>
                             </a>
                         </li>
                         <li>
@@ -97,7 +127,9 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center"
+                            asp-controller="Login"
+                            asp-action="Logout">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -122,31 +154,44 @@
                 </a>
             </li><!-- End Dashboard Nav -->
 
+            @if(user.IsSignedIn(User) && rol != "Usuario")
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-controller="Ejercicios" asp-action="Index">
-                    <i class="bi bi-person"></i>
-                    <span>Ejercicios</span>
-                </a>
-            </li>
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Ejercicios" asp-action="Index">
+                        <i class="bi bi-person"></i>
+                        <span>Ejercicios</span>
+                    </a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-controller="Categorias" asp-action="Index">
-                    <i class="bi bi-person"></i>
-                    <span>Categorias</span>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Categorias" asp-action="Index">
+                        <i class="bi bi-person"></i>
+                        <span>Categorias</span>
+                    </a>
+                </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-controller="Rutinas" asp-action="Index">
-                    <i class="bi bi-people"></i>
-                    <span>Rutinas</span>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Rutinas" asp-action="Index">
+                        <i class="bi bi-people"></i>
+                        <span>Rutinas</span>
+                    </a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Users" asp-action="Index">
+                        <i class="bi bi-people"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+            }
 
         </ul>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     </aside><!-- End Sidebar-->
        <main role="main" class="pb-3">
@@ -169,16 +214,8 @@
             }
     </style>
 
-    <script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
     <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.bundle.min.js")"></script>
-@*     <script src="@Url.Content("~/js/site.js")" asp-append-version="true"></script>
- *@
-    <!-- Vendor JS Files -->
-    <script src="@Url.Content("~/assets/vendor/apexcharts/apexcharts.min.js")"></script>
-    <a href="@Url.Content("~/assets/vendor/bootstrap/js/bootstrap.bundle.js.map")"></a>
-    <a href="@Url.Content("~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js.map")"></a>
-    <script src="@Url.Content("~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
-    <script src="@Url.Content("~/assets/vendor/bootstrap/js/bootstrap.bundle.js")"></script>
+
 
     <script src="@Url.Content("~/assets/vendor/chart.js/chart.umd.js")"></script>
     <script src="@Url.Content("~/assets/vendor/echarts/echarts.min.js")"></script>

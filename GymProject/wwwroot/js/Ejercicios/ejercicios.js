@@ -1,12 +1,12 @@
 $(document).ready(() => {
-    $('#selectCategorias').select2({
+    $('#ddlAgregarCategoria').select2({
         dropdownParent: $('#modalAgregar'),
-        placeholder: "Selecciona una categoria", // Configura el placeholder
+        placeholder: "Selecciona", // Configura el placeholder
         allowClear: true, // Permite borrar la selección
         width: '100%' // Asegura que use el ancho completo
     });
 
-    $('#editCategorias').select2({
+    $('#ddlEditarCategoria').select2({
         dropdownParent: $('#modalEditar'),
         placeholder: "Selecciona una categoria", // Configura el placeholder
 
@@ -32,21 +32,21 @@ $('#tablaEjercicios tbody')
 
         $('#editId').val(id);
 
-        $('#editNombre').val(nombre);
+        $('#txtEditarNombre').val(nombre);
 
-        $('#editCategorias option').prop('selected', false);
+        $('#ddlEditarCategoria option').prop('selected', false);
 
         var valoresSeleccionados = [];
 
         categorias.forEach(function (categoria) {
-            $('#editCategorias option').filter(function () {
+            $('#ddlEditarCategoria option').filter(function () {
                 return $(this).text() === categoria.trim(); // Comparar por texto.
             }).each(function () {
                 valoresSeleccionados.push($(this).val()); // Agregar el valor al array
             });
         });
 
-        $('#editCategorias').val(valoresSeleccionados).trigger('change');
+        $('#ddlEditarCategoria').val(valoresSeleccionados).trigger('change');
 
 
         $('#modalEditar').modal({

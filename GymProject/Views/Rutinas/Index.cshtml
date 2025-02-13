@@ -1,4 +1,11 @@
-﻿
+﻿@model GymProject.Models.ViewModels.RutinasVM
+@using System.Text.Json
+@using System.Text.Json.Serialization
+
+@{
+    int nextPage = Convert.ToInt32(ViewBag.pageNumber + 1);
+    int prevPage = Convert.ToInt32(ViewBag.pageNumber - 1);
+}
 <head>
     <link href="~/css/Rutinas/index.css" rel="stylesheet" />
 
@@ -8,52 +15,204 @@
 <main id="main" class="main">
     <div class="dashboard">
         <h1 class="dashboard-title">Gestión de Rutinas</h1>
-        <button class="btn btn-outline-primary mb-4" data-toggle="modal" data-target="#modalAgregar" id="btnCrear">
+        <button class="btn btn-outline-primary mb-4" id="btnCrear">
             <span class="material-icons">add</span> Crear rutina
         </button>
-    </div>
 
-    <!-- Modal para agregar nueva rutina -->
-    <div class="modal modal-lg modal-blur fade" id="modalAgregar" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <span class="material-icons">add_circle</span> Agregar Nuevo Ejercicio
-                    </h5>
+        <form method="get">
+            <div class="contaier mt-5">
+                <div class="row">
+                    <div class="col col-md-5 d-flex">
+                        <input type="text" class="form-control" name="searchQuery" id="searchQuery" value="@ViewBag.SearchQuery" placeholder="Buscar por rutina o ejercicio..." />
+                    </div>
 
-                </div>
-                <form method="post">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label">Nombre de la rutina</label>
-                            <input type="text" class="form-control" id="txtNombre" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Descripción</label>
-                            <input type="text" class="form-control" id="txtDescripcion" />
-                        </div>
-
-                        <div id="contenedorSets"></div>
-                        <button type="button" id="btnAgregarSet" class="btn btn-outline-primary mt-3">
-                            Agregar Set
+                    <div class="col col-md-4 d-flex">
+                        <input type="date" class="form-control" name="searchDate" id="searchDate" value="@ViewBag.SearchDate" />
+                        <button type="submit" class="btn btn-primary ms-3" id="btnBuscar">
+                            <span class="material-icons">search</span>
                         </button>
+
+                        <button type="submit" class="btn btn-danger ms-3" id="btnLimpiar">
+                            <span class="material-icons">cleaning_services</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="container mt-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @if (Model.Rutinas != null && Model.Rutinas.Any())
+                {
+                    @foreach (var rutina in Model.Rutinas)
+                    {
+                        <div class="col">
+                            <div class="card shadow-sm border-0 rounded-lg h-100">
+                                <div class="card-header bg-gradient-primary text-white rounded-top">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0 fw-bold">@rutina.Nombre</h5>
+                                        <i class="bi bi-journal-text fs-4"></i>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted">@rutina.Descripcion</p>
+                                    <h6 class="text-secondary">Sets:</h6>
+                                    <div class="overflow-auto" style="max-height: 150px;">
+                                        @foreach (var set in rutina.Sets)
+                                        {
+                                            <div class="border-bottom pb-2 mb-2">
+                                                <strong>@set.Nombre</strong>
+                                                <span class="badge bg-secondary ms-2">@set.Series series</span>
+                                                <ul class="list-unstyled mt-1">
+                                                    @foreach (var SetEjercicio in set.SetEjercicios)
+                                                    {
+                                                        <li class="d-flex justify-content-between align-items-center">
+                                                            <span class="text-dark">@SetEjercicio.Ejercicio.Nombre</span>
+                                                            <small class="text-muted">@SetEjercicio.Repeticiones reps</small>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center bg-white border-top-0">
+                                    <button class="btnEditarRutina btn btn-sm btn-outline-primary" data-id="@rutina.IdRutina"
+                                            data-nombre="@rutina.Nombre"
+                                            data-descripcion="@rutina.Descripcion"
+                                            data-sets='@Json.Serialize(rutina.Sets.Select(s => new
+                                            {
+                                                s.Nombre,
+                                                s.Series,
+                                                SetEjercicios = s.SetEjercicios.Select(ej => new
+                                                {
+                                                    ej.Ejercicio.Nombre,
+                                                    ej.Repeticiones
+                                                })
+                                            }))'>
+                                        <i class="btnEditarRutina bi bi-pencil">
+                                        </i> Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" type="submit"
+                                            asp-controller="Rutinas"
+                                            asp-action="Delete"
+                                            asp-route-Id="@rutina.IdRutina">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>No existen rutinas que coincidan con la búsqueda</p>
+                }
+            </div>
+        </div>
+
+        @if (Model.Rutinas != null && Model.Rutinas.Any() && ViewBag.totalPaginas > 1)
+        {
+            <nav aria-label="Page navigation example" class="mt-4">
+                <ul class="pagination d-flex justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" asp-route-pageNumber="@prevPage">
+                            Anterior
+                        </a>
+                    </li>
+                    @for (int i = 1; i <= ViewBag.totalPaginas; i++)
+                    {
+                        <li class="page-item @(ViewBag.currentPage == i ? "active" : "")">
+                            <a class="page-link" asp-route-pageNumber="@i">@i</a>
+                        </li>
+                    }
+                    <li class="page-item">
+                        <a class="page-link" asp-route-pageNumber="@nextPage">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+        }
+        <!-- Modal para agregar nueva rutina -->
+        <div class="modal modal-lg modal-blur fade" id="modalAgregar" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <span class="material-icons">add_circle</span> Agregar Nueva Rutina
+                        </h5>
+
+                    </div>
+                    <form method="post" id="formRutina">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Nombre de la rutina</label>
+                                <input asp-for="Nombre" type="text" class="form-control" id="txtNombre" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Descripción</label>
+                                <input asp-for="Descripcion" type="text" class="form-control" id="txtDescripcion" required />
+                            </div>
+
+                            <div class="accordion" id="accordionSets"></div>
+                            <button type="button" id="btnAgregarSet" class="btn btn-outline-primary mt-3">
+                                Agregar Set
+                            </button>
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                            <button type="submit" class="btn btn-outline-primary">Guardar</button>
                         </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+
+        <!-- Modal para editar una rutina -->
+        <div class="modal modal-lg modal-blur fade" id="modalEditar" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <span class="material-icons">add_circle</span> Editar Rutina
+                        </h5>
+
+                    </div>
+                    <form method="post" id="formRutina">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Nombre de la rutina</label>
+                                <input asp-for="Nombre" type="text" class="form-control" id="editNombre" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Descripción</label>
+                                <input asp-for="Descripcion" type="text" class="form-control" id="editDescripcion" />
+                            </div>
+
+                            <div class="accordion" id="accordionEditarSets"></div>
+                            <button type="button" id="btnAgregarSet" class="btn btn-outline-primary mt-3">
+                                Agregar Set
+                            </button>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                            <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 </main>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    const listaEjercicios = @Html.Raw(Json.Serialize(Model.ListaEjercicios));
+</script>
 
 <script src="~/js/Rutinas/rutinas.js"></script>
+<script src="~/js/Rutinas/editarRutina.js"></script>
+
