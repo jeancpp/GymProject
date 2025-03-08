@@ -22,14 +22,20 @@ namespace GymProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
-            var result = await signInManager.PasswordSignInAsync(loginVM.Username, loginVM.Password, false, false);
-
-            if (result.Succeeded && result!= null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                var result = await signInManager.PasswordSignInAsync(loginVM.Username, loginVM.Password, false, false);
+
+                if (result.Succeeded && result != null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                TempData["ErrorMessage"] = "Usuario o contraseña incorrectos.";
             }
 
             return View(loginVM);
+
         }
         [HttpGet]
         public async Task<IActionResult> Logout()

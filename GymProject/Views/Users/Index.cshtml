@@ -14,7 +14,7 @@
         <div class="category-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    <span class="material-icons">fitness_center</span> Usuarios
+                    <span class="material-icons">person</span> Usuarios
                 </h5>
                 @if (Model != null && Model.Users.Any())
                 {
@@ -24,8 +24,8 @@
                                 <td>Nombre</td>
                                 <td>Email</td>
                                 <td>Rol</td>
-                                <td></td>
-                            </tr>
+@*                                 <td></td>
+ *@                            </tr>
                         </thead>
 
                         <tbody>
@@ -35,15 +35,15 @@
                                     <td>@usuario.Username</td>
                                     <td>@usuario.Email</td>
                                     <td>@usuario.Rol</td>
-                                    <td>
-                                        <button type="button"
+                                    @* <td>
+                                        <button type="button" id="btnEditar"
                                                 class="btnEditarUsuario btn btn-primary"
                                                 data-id="@usuario.Id"
                                                 data-nombre="@usuario.Username"
                                                 data-email="@usuario.Email">
                                             Editar
                                         </button>
-                                    </td>
+                                    </td> *@
                                 </tr>
                             }
                         </tbody>

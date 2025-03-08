@@ -14,6 +14,8 @@ $(document).ready(() => {
             bottomStart: null,
             bottomEnd: null
         },
+        info: false,
+        searching: false
     });
 
 
@@ -29,4 +31,4 @@ btnAbrirModal.addEventListener("click", function () {
     document.getElementById("txtCon").value = "";
     $('#ddlTipoUsuario').val(null).trigger('change');
 });
-// 
+

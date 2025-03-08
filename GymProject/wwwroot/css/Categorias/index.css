@@ -6,23 +6,42 @@
 }
 
 .dashboard {
-    width: 80%;
     max-width: 1200px;
     text-align: center;
 }
 
 .dashboard-title {
-    color: #1a73e8;
+    color: #666666;
     margin-bottom: 30px;
     font-size: 2.5rem;
     font-weight: bold;
 }
 
-.btn {
+
+
+#agregarCategoria, .btnEditarEjercicio, #agregarEjercicio, #btnAgregar {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    background-color: #027b8c;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.6rem;
+    transition: all 0.3s ease-in-out;
+    color: #ffffff;
 }
+
+    #agregarCategoria:hover, .btnEditarEjercicio:hover, #agregarEjercicio:hover, #btnAgregar:hover {
+        background-color: #025f6d;
+        transform: translateY(-2px);
+        box-shadow: 0px 4px 10px rgba(2, 123, 140, 0.4);
+    }
+
+    #agregarCategoria:active, .btnEditarEjercicio:active, #agregarEjercicio:active, #btnAgregar:active {
+        transform: scale(0.98);
+    }
 
 .category-card {
     background-color: #fff;
@@ -38,7 +57,7 @@
     align-items: center;
     gap: 8px;
     font-size: 1.5rem;
-    color: #1a73e8;
+    color: #666666;
 }
 
 .no-categories {
@@ -50,7 +69,7 @@
 }
 
 .modal-header .material-icons {
-    color: #1a73e8;
+    color: #027b8c;
 }
 /* Estilos Responsive */
 @media (max-width: 768px) {

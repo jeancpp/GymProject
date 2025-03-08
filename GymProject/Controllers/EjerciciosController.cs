@@ -38,31 +38,27 @@ namespace GymProject.Controllers
         [ActionName("Index")]
         public async Task<IActionResult> Index(EjerciciosVM ejerciciosVM)
         {
-            if (ModelState.IsValid)
+            var ejercicio = new Ejercicios
             {
-                var ejercicio = new Ejercicios
+                Nombre = ejerciciosVM.Nombre,
+            };
+
+            var categoriasSeleccionadas = new List<Categorias>();
+
+            foreach (var id in ejerciciosVM.CategoriaSeleccionada)
+            {
+                var idCategoria = int.Parse(id);
+                var categoriaExistente = await categoriasRepository.GetAsync(idCategoria);
+
+                if (categoriaExistente != null)
                 {
-                    Nombre = ejerciciosVM.Nombre,
-                };
-
-                var categoriasSeleccionadas = new List<Categorias>();
-
-                foreach (var id in ejerciciosVM.CategoriaSeleccionada)
-                {
-                    var idCategoria = int.Parse(id);
-                    var categoriaExistente = await categoriasRepository.GetAsync(idCategoria);
-
-                    if (categoriaExistente != null)
-                    {
-                        categoriasSeleccionadas.Add(categoriaExistente);
-                    }
-
+                    categoriasSeleccionadas.Add(categoriaExistente);
                 }
-                ejercicio.Categorias = categoriasSeleccionadas;
-
-                await ejerciciosRepository.AddAsync(ejercicio);
 
             }
+            ejercicio.Categorias = categoriasSeleccionadas;
+
+            await ejerciciosRepository.AddAsync(ejercicio);
 
             return RedirectToAction("Index");
         }

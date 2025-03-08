@@ -2025,6 +2025,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\img\\logo_TWR.png",
+      "PackagePath": "staticwebassets\\img\\logo_TWR.png"
+    },
+    {
       "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\Categorias\\categorias.js",
       "PackagePath": "staticwebassets\\js\\Categorias\\categorias.js"
     },
@@ -2043,6 +2047,10 @@
     {
       "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\Usuarios\\usuarios.js",
       "PackagePath": "staticwebassets\\js\\Usuarios\\usuarios.js"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\common.js",
+      "PackagePath": "staticwebassets\\js\\common.js"
     },
     {
       "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\dataTable.es.js",
@@ -2287,6 +2295,10 @@
     {
       "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\lib\\sweetalert\\sweetalert2@11.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert\\sweetalert2@11.js"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.GymProject.Microsoft.AspNetCore.StaticWebAssets.props",

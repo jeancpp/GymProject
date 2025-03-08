@@ -39,7 +39,7 @@ namespace GymProject.Controllers
 
             }
 
-            userVM.Roles = roles.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
+            userVM.Roles = roles.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }).Where(x => x.Text != "Admin");
             return View(userVM);
         }
 

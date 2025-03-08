@@ -7,7 +7,7 @@
 <main id="main" class="main">
     <div class="dashboard">
         <h1 class="dashboard-title">Gestión de Ejercicios</h1>
-        <button class="btn btn-outline-primary mb-4" data-toggle="modal" data-target="#modalAgregar">
+        <button class="btn mb-4" data-toggle="modal" data-target="#modalAgregar" id="agregarEjercicio">
             <span class="material-icons">add</span> Agregar Ejercicio
         </button>
 
@@ -48,7 +48,9 @@
                                                 data-id="@ejercicio.IdEjercicio"
                                                 data-nombre="@ejercicio.Nombre"
                                                 data-categorias="@string.Join(",", ejercicio.Categorias.Select(c => c.Nombre))">
-                                            Editar
+                                            <span class="material-icons">
+                                                edit
+                                            </span>
                                         </button>
                                     </td>
                                 </tr>
@@ -108,7 +110,7 @@
                     </h5>
                 </div>
                 <form method="post" asp-controller="Ejercicios" asp-action="EditarEjercicio">
-                    <input asp-for="IdEjercicio" type="text" class="form-control" name="IdEjercicio" id="editId" hidden />
+                    <input asp-for="IdEjercicio" type="text" class="form-control" name="IdEjercicio" id="editId" hidden required/>
 
                     <div class="modal-body">
                         <div class="mb-3">
@@ -118,7 +120,7 @@
 
                         <div class="mb-3">
                             <label asp-for="Categorias" class="form-label">Categorias</label>
-                            <select class="form-control" asp-items="@Model.Categorias" asp-for="CategoriaSeleccionada" multiple id="ddlEditarCategoria" style="width:100%">
+                            <select class="form-control" asp-items="@Model.Categorias" asp-for="CategoriaSeleccionada" multiple id="ddlEditarCategoria" style="width:100%" required>
                             </select>
                         </div>
 

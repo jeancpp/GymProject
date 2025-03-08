@@ -7,5 +7,6 @@ namespace GymProject.Repositories
         Task<IEnumerable<Categorias>>GetAllAsync();
         Task<Categorias?> GetAsync(int id);
         Task<Categorias> AddAsync(Categorias categoria);
+        Task<Categorias?> GetByName(string Nombre);
     }
 }

@@ -31,19 +31,22 @@ namespace GymProject.Controllers
 
         [HttpPost]
         [ActionName("Index")]
-        public async Task<IActionResult> Index(CategoriasVM categoriasVM)
+        public async Task<IActionResult> Index([FromBody] string Nombre)
         {
-            if (ModelState.IsValid) {
+            var categoria = new Categorias
+            {
+                Nombre = Nombre,
+            };
 
-                var categoria = new Categorias
-                {
-                    Nombre = categoriasVM.Nombre,
-                };
+            var existeCategoria = await categoriasRepository.GetByName(Nombre);
 
+            if (existeCategoria != null)
+            {
                 await categoriasRepository.AddAsync(categoria);
-
+                return Json(new { success = true });
             }
-            return RedirectToAction("Index");
+
+            return Json(new { success = false });
         }
     }
 }

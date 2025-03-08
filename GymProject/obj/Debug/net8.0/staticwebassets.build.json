@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dy0g5mLSrQrMEMRdnyNoBNVvWKrd+BCsBxw7DrwvYr0=",
+  "Hash": "oeHvXoUrzO8lAfRiR0iCFnOUK0q//pm6FKakeTDpf6s=",
   "Source": "GymProject",
   "BasePath": "_content/GymProject",
   "Mode": "Default",
@@ -9650,6 +9650,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\img\\logo_TWR.png",
+      "SourceId": "GymProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\",
+      "BasePath": "_content/GymProject",
+      "RelativePath": "img/logo_TWR.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo_TWR.png"
+    },
+    {
       "Identity": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\Categorias\\categorias.js",
       "SourceId": "GymProject",
       "SourceType": "Discovered",
@@ -9667,6 +9686,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Categorias\\categorias.js"
+    },
+    {
+      "Identity": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\common.js",
+      "SourceId": "GymProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\",
+      "BasePath": "_content/GymProject",
+      "RelativePath": "js/common.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\common.js"
     },
     {
       "Identity": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\js\\dataTable.es.js",
@@ -10902,6 +10940,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\lib\\sweetalert\\sweetalert2@11.js",
+      "SourceId": "GymProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jeanc\\Documents\\Projectos\\TheWellnessRoom\\Web\\GymProject\\wwwroot\\",
+      "BasePath": "_content/GymProject",
+      "RelativePath": "lib/sweetalert/sweetalert2@11.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\sweetalert\\sweetalert2@11.js"
     }
   ]
 }

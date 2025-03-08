@@ -19,11 +19,11 @@ namespace GymProject.Repositories
 
             var adminUser = await authDbContext.Users.FirstOrDefaultAsync(x => x.NormalizedUserName == "admin");
 
-            //if (adminUser != null)
-            //{
-            //    users.Remove(adminUser);
-            //}
-            
+            if (adminUser != null)
+            {
+                users.Remove(adminUser);
+            }
+
             return users;
         }
 

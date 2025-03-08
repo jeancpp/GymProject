@@ -1,4 +1,4 @@
-/**
+﻿/**
 * Template Name: NiceAdmin
 * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
 * Updated: Apr 20 2024 with Bootstrap v5.3.3
@@ -14,10 +14,22 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
-  color: #444444;
+    background: linear-gradient(135deg, #027b8c, #ffffff);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Permite que el fondo cubra toda la pantalla */
+    margin: 0;
 }
+
+main {
+    flex: 1; /* Hace que el contenido se expanda si es necesario */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente si es corto */
+    align-items: center;
+}
+
 
 a {
   color: #4154f1;
@@ -365,15 +377,15 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
+  max-height: 50px;
   margin-right: 6px;
 }
 
 .logo span {
-  font-size: 26px;
-  font-weight: 700;
-  color: #012970;
-  font-family: "Nunito", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #666666;
+    font-family: "Nunito", sans-serif;
 }
 
 .header {
@@ -387,12 +399,12 @@ h6 {
   /* Search Bar */
 }
 
-.header .toggle-sidebar-btn {
-  font-size: 32px;
-  padding-left: 10px;
-  cursor: pointer;
-  color: #012970;
-}
+    .header .toggle-sidebar-btn {
+        font-size: 32px;
+        padding-left: 10px;
+        cursor: pointer;
+        color: #666666;
+    }
 
 .header .search-bar {
   min-width: 360px;
@@ -598,19 +610,19 @@ h6 {
 # Sidebar
 --------------------------------------------------------------*/
 .sidebar {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  z-index: 996;
-  transition: all 0.3s;
-  padding: 20px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #aab7cf transparent;
-  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    z-index: 996;
+    transition: all 0.3s;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #aab7cf transparent;
+    box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+    background-color: #ffffff;
 }
 
 @media (max-width: 1199px) {
@@ -697,23 +709,22 @@ h6 {
   color: #4154f1;
 }
 
-.sidebar-nav .nav-link.collapsed {
-  color: #012970;
-  background: #fff;
-}
+    .sidebar-nav .nav-link.collapsed {
+        color: #027b8c;
+        background: #fff;
+    }
 
 .sidebar-nav .nav-link.collapsed i {
   color: #899bbd;
 }
 
-.sidebar-nav .nav-link:hover {
-  color: #4154f1;
-  background: #f6f9ff;
-}
+    .sidebar-nav .nav-link:hover {
+        color: #899bbd;
+    }
 
-.sidebar-nav .nav-link:hover i {
-  color: #4154f1;
-}
+        .sidebar-nav .nav-link:hover i {
+            color: #899bbd;
+        }
 
 .sidebar-nav .nav-link .bi-chevron-down {
   margin-right: 0;

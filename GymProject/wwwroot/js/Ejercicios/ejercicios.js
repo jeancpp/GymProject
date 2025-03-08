@@ -8,7 +8,7 @@ $(document).ready(() => {
 
     $('#ddlEditarCategoria').select2({
         dropdownParent: $('#modalEditar'),
-        placeholder: "Selecciona una categoria", // Configura el placeholder
+        placeholder: "Selecciona", // Configura el placeholder
 
     });
     new DataTable('#tablaEjercicios', {
@@ -19,6 +19,14 @@ $(document).ready(() => {
             bottomStart: null,
             bottomEnd: null
         },
+    });
+
+    const btnAbrirModal = document.getElementById("agregarEjercicio");
+
+    btnAbrirModal.addEventListener("click", function () {
+        $('#txtNombre').val('');
+        $('#ddlAgregarCategoria').val(null).trigger('change');
+
     });
 });
 

@@ -1,6 +1,7 @@
 ﻿using GymProject.Data;
 using GymProject.Models.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace GymProject.Repositories
 {
@@ -28,6 +29,11 @@ namespace GymProject.Repositories
         public async Task<Categorias?> GetAsync(int id)
         {
             return await gymDbContext.Categorias.FirstOrDefaultAsync(x => x.IdCategoria == id);
+        }
+
+        public async Task<Categorias?> GetByName(string Nombre)
+        {
+            return await gymDbContext.Categorias.FirstOrDefaultAsync(x => x.Nombre == Nombre);
         }
     }
 }
