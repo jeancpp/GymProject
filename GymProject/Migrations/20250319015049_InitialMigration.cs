@@ -77,6 +77,27 @@ namespace GymProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AsignacionRutina",
+                columns: table => new
+                {
+                    IdAsignacion = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdRutina = table.Column<int>(type: "int", nullable: false),
+                    IdUsuario = table.Column<int>(type: "int", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AsignacionRutina", x => x.IdAsignacion);
+                    table.ForeignKey(
+                        name: "FK_AsignacionRutina_Rutinas_IdRutina",
+                        column: x => x.IdRutina,
+                        principalTable: "Rutinas",
+                        principalColumn: "IdRutina",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sets",
                 columns: table => new
                 {
@@ -125,6 +146,11 @@ namespace GymProject.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AsignacionRutina_IdRutina",
+                table: "AsignacionRutina",
+                column: "IdRutina");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CategoriasEjercicios_EjerciciosIdEjercicio",
                 table: "CategoriasEjercicios",
                 column: "EjerciciosIdEjercicio");
@@ -148,6 +174,9 @@ namespace GymProject.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AsignacionRutina");
+
             migrationBuilder.DropTable(
                 name: "CategoriasEjercicios");
 

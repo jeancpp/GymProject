@@ -171,7 +171,7 @@ namespace GymProject.Migrations.AuthDb
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "0c5bd997-23b1-4a02-afa7-a9a6510cc3f6", 0, "b8843413-a6c0-4cfc-86b9-4d196b9486be", null, false, false, null, null, null, "AQAAAAIAAYagAAAAEAr+uCkbtT3QM17LKP+Y+/TPXie6BhBMTVXSRgjGOmcUNWC40E0xdijyixd1xcwaQg==", null, false, "ea9cdaf8-ce35-4dca-a6a9-def5218ae2ef", false, "admin" });
+                values: new object[] { "0c5bd997-23b1-4a02-afa7-a9a6510cc3f6", 0, "b1718013-11fa-4ef7-a0f0-ce7a90bda729", null, false, false, null, null, "admin", "AQAAAAIAAYagAAAAEK6muBzK1SJ/Yobn2ySXwrSS91mB1MTq/6PqTivNLrbUt81r6DTglEKqVBFJ7MyRuA==", null, false, "13080351-ffd2-4102-9428-d10d4b9b4225", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

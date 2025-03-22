@@ -37,6 +37,30 @@ namespace GymProject.Migrations
                     b.ToTable("CategoriasEjercicios");
                 });
 
+            modelBuilder.Entity("GymProject.Models.Domain.AsignacionRutina", b =>
+                {
+                    b.Property<int>("IdAsignacion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAsignacion"));
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdRutina")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdAsignacion");
+
+                    b.HasIndex("IdRutina");
+
+                    b.ToTable("AsignacionRutina");
+                });
+
             modelBuilder.Entity("GymProject.Models.Domain.Categorias", b =>
                 {
                     b.Property<int>("IdCategoria")
@@ -159,6 +183,17 @@ namespace GymProject.Migrations
                         .HasForeignKey("EjerciciosIdEjercicio")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GymProject.Models.Domain.AsignacionRutina", b =>
+                {
+                    b.HasOne("GymProject.Models.Domain.Rutinas", "Rutina")
+                        .WithMany()
+                        .HasForeignKey("IdRutina")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rutina");
                 });
 
             modelBuilder.Entity("GymProject.Models.Domain.SetEjercicios", b =>

@@ -1,5 +1,6 @@
 ﻿using GymProject.Data;
 using GymProject.Models.Domain;
+using GymProject.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymProject.Repositories
@@ -46,12 +47,45 @@ namespace GymProject.Repositories
             query = query.Skip(skipResults).Take(pageSize);
 
             return await query.ToListAsync();
-            //return await gymDbContext.Rutinas.Include(x => x.Sets).ThenInclude(s => s.SetEjercicios).ThenInclude(e => e.Ejercicio).ToListAsync();
         }
 
-        public Task<Rutinas> GetAsync(int id)
+        public async Task<IEnumerable<Rutinas>> GetRutinas()
         {
-            throw new NotImplementedException();
+            var query = gymDbContext.Rutinas;
+
+            return await query.ToListAsync();
+        }
+
+        public async Task<RutinaDto> GetAsync(int id)
+        {
+            var rutina = await gymDbContext.Rutinas
+                .Include(x => x.Sets)
+                    .ThenInclude(s => s.SetEjercicios)
+                        .ThenInclude(e => e.Ejercicio)
+                .FirstOrDefaultAsync(x => x.IdRutina == id);
+
+            if (rutina == null) return null;
+
+            var rutinaDto = new RutinaDto
+            {
+                IdRutina = rutina.IdRutina,
+                Nombre = rutina.Nombre,
+                Descripcion = rutina.Descripcion,
+                Sets = rutina.Sets.Select(s => new SetDto
+                {
+                    IdSet = s.IdSet,
+                    Nombre = s.Nombre,
+                    Series = s.Series,
+                    SetEjercicios = s.SetEjercicios.Select(se => new EjercicioDto
+                    {
+                        IdEjercicio = se.Ejercicio.IdEjercicio,
+                        Nombre = se.Ejercicio.Nombre,
+                        Repeticiones = se.Repeticiones
+                    }).ToList()
+                }).ToList()
+            };
+
+            return rutinaDto;
         }
 
         public Task<Rutinas> UpdateAsync(Rutinas rutina)

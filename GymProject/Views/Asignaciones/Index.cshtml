@@ -1,0 +1,65 @@
+﻿@model GymProject.Models.ViewModels.AsignacionRutinaVM
+
+
+<head>
+    <link href="~/css/asignaciones/index.css" rel="stylesheet" />
+
+</head>
+
+
+<main id="main" class="main">
+    <div id="calendario"></div>
+    <!-- Modal para Asignar Rutina -->
+    <div class="modal modal-lg modal-blur fade" id="modalAsignar" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="material-icons">add_circle</span> Asignar Rutina
+                    </h5>
+                </div>
+                <form method="post" id="formAsignarRutina">
+                    <div class="modal-body">
+                        <!-- Contenedor para alinear horizontalmente Fecha y Hora -->
+                        <div class="mb-3 row">
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha</label>
+                                <input type="text" class="form-control" id="txtFecha" disabled />
+                                <input type="text" class="form-control" id="txtFechaFormat" disabled hidden />
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-6">
+                                <label class="form-label">Selecciona los clientes</label>
+                                <select class="form-select" asp-items="@Model.Usuarios" asp-for="UsuariosSeleccionados" multiple id="ddlAgregarUsuario" required>
+
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Seleccionar Rutina</label>
+                                <select class="form-control" asp-items="@Model.Rutinas" asp-for="RutinaSeleccionada"  id="ddlAgregarRutina" required>
+                                </select>
+                            </div>
+                            <div id="detalleRutina" style="display: none;"></div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-outline-primary" id="guardarAsignacion">Guardar Asignación</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script>
+    const controller = `@Url.Content("~")/Asignaciones`;
+</script>
+
+<script src="~/js/asignaciones/index.js"></script>

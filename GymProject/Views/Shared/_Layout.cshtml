@@ -57,7 +57,7 @@
 
                 <span class="d-none d-lg-block">The Wellness Room</span>
             </a>
-            <i class="bi bi-list toggle-sidebar-btn"></i>
+            <i class="bi bi-list toggle-sidebar-btn" id="btnAside"></i>
         </div><!-- End Logo -->
 
 
@@ -186,15 +186,26 @@
                         <span>Usuarios</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Asignaciones" asp-action="Index">
+                        <i class="bi bi-bookmark-dash"></i>
+                        <span>Calendario</span>
+                    </a>
+                </li>
             }
 
         </ul>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+@*         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ *@
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="~/lib/sweetalert/sweetalert2@11.js"></script>
         <script src="~/js/common.js"></script>
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+
     </aside><!-- End Sidebar-->
         @RenderBody()
 

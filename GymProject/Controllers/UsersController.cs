@@ -1,4 +1,5 @@
-﻿using GymProject.Models.ViewModels;
+﻿using GymProject.Models;
+using GymProject.Models.ViewModels;
 using GymProject.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

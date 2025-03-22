@@ -14,5 +14,6 @@ namespace GymProject.Data
         public DbSet<Rutinas> Rutinas { get; set; }
         public DbSet<Sets> Sets { get; set; }
         public DbSet<SetEjercicios> SetEjercicios { get; set; }
+        public DbSet<AsignacionRutina> AsignacionRutina { get; set; }
     }
 }

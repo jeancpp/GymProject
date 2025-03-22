@@ -1,4 +1,5 @@
 ﻿using GymProject.Data;
+using GymProject.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;

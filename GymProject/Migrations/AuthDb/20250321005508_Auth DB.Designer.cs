@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymProject.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20250201145959_Auth DB")]
+    [Migration("20250321005508_Auth DB")]
     partial class AuthDB
     {
         /// <inheritdoc />
@@ -169,12 +169,13 @@ namespace GymProject.Migrations.AuthDb
                         {
                             Id = "0c5bd997-23b1-4a02-afa7-a9a6510cc3f6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b8843413-a6c0-4cfc-86b9-4d196b9486be",
+                            ConcurrencyStamp = "b1718013-11fa-4ef7-a0f0-ce7a90bda729",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEAr+uCkbtT3QM17LKP+Y+/TPXie6BhBMTVXSRgjGOmcUNWC40E0xdijyixd1xcwaQg==",
+                            NormalizedUserName = "admin",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK6muBzK1SJ/Yobn2ySXwrSS91mB1MTq/6PqTivNLrbUt81r6DTglEKqVBFJ7MyRuA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ea9cdaf8-ce35-4dca-a6a9-def5218ae2ef",
+                            SecurityStamp = "13080351-ffd2-4102-9428-d10d4b9b4225",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });

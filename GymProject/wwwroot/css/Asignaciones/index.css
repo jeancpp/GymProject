@@ -1,0 +1,51 @@
+﻿#calendario {
+    background: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    width: 100%;
+    overflow-y: auto; /* Habilita el desplazamiento vertical si es necesario */
+    transition: all 0.3s ease-in-out;
+}
+
+
+.modal-header .material-icons {
+    color: #027b8c;
+}
+
+/* Contenedor principal de rutina */
+#detalleRutina {
+    margin-top: 15px;
+}
+
+    /* Bordes redondeados más grandes */
+    #detalleRutina .rounded-xl {
+        border-radius: 16px;
+    }
+
+    /* Personalizar borde izquierdo de los sets */
+    #detalleRutina .border-custom {
+        border-color: #027b8c !important;
+    }
+
+    /* Íconos de los ejercicios en color personalizado */
+    #detalleRutina .icon-custom {
+        color: #027b8c;
+    }
+
+    /* Badges redondas con color personalizado */
+    #detalleRutina .badge-custom {
+        background-color: #027b8c;
+        color: #ffffff;
+        font-size: 0.85rem;
+        padding: 0.4em 0.8em;
+    }
+
+    /* Suavizar las divisiones de los ejercicios */
+    #detalleRutina .list-unstyled li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+        #detalleRutina .list-unstyled li:last-child {
+            border-bottom: none;
+        }
