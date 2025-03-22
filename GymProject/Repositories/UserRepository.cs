@@ -34,10 +34,19 @@ namespace GymProject.Repositories
             return roles;
         }
 
+        public async Task<IdentityUser> GetAsyncUser(Guid id)
+        {
+            var user = await authDbContext.Users.FirstOrDefaultAsync(x => x.Id == id.ToString());
+            return user;
+
+        }
+
         public async Task <IdentityRole> GetRolById(Guid id)
         {
             var rol = await authDbContext.Roles.FirstOrDefaultAsync(x => x.Id == id.ToString());
             return rol;
         }
+
+
     }
 }

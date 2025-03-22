@@ -17,7 +17,6 @@ namespace GymProject.Repositories
         {
             await gymDbContext.Categorias.AddAsync(categoria);
             await gymDbContext.SaveChangesAsync();
-
             return categoria;
         }
 

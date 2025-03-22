@@ -31,6 +31,7 @@ builder.Services.AddScoped<ICategoriasRepository, CategoriasRepository>();
 builder.Services.AddScoped<IEjerciciosRepository, EjerciciosRepository>();
 builder.Services.AddScoped<IRutinasRepository, RutinasRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAsignacionesRepository, AsignacionesRepository>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

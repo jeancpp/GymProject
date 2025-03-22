@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace GymProject.Models.Domain
 {
@@ -13,7 +14,7 @@ namespace GymProject.Models.Domain
         public int IdRutina { get; set; } // Rutina asignada
 
         [Required]
-        public int IdUsuario { get; set; } 
+        public ICollection<IdentityUser> Usuarios { get; set; }
 
         [Required]
         public DateTime Fecha { get; set; }

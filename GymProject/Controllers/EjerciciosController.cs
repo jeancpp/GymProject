@@ -5,6 +5,7 @@ using GymProject.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace GymProject.Controllers
 {
@@ -22,6 +23,7 @@ namespace GymProject.Controllers
 
         public async Task<IActionResult> Index()
         {
+
             var categorias = await categoriasRepository.GetAllAsync();
             var ejercicios = await ejerciciosRepository.GetAllAsync();
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using GymProject.Models.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GymProject.Repositories
@@ -8,6 +9,6 @@ namespace GymProject.Repositories
         Task<IEnumerable<IdentityUser>>GetAll();
         Task<IEnumerable<IdentityRole>> GetAllRoles ();
         Task<IdentityRole> GetRolById(Guid id);
-
+        Task<IdentityUser?> GetAsyncUser(Guid id);
     }
 }
