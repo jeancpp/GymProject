@@ -13,13 +13,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //CREACIÓN DE RUTINAS
     btnAbrirModal.addEventListener("click", function () {
-        $('#modalAgregar').modal({
-            backdrop: 'static',
-            keyboard: false
-        }).modal('show');
-
         limpiarModal();
+
+        const modal = document.getElementById("modalAgregar");
+
+        if (esDispositivoMovil()) {
+            modal.classList.remove("fade");
+            modal.classList.add("show", "show-fullscreen");
+            modal.style.display = "block";
+            modal.removeAttribute("aria-hidden");
+            document.body.classList.add("modal-open");
+            document.body.style.overflow = 'hidden';
+        } else {
+            $('#modalAgregar').modal({
+                backdrop: 'static',
+                keyboard: false
+            }).modal('show');
+        }
     });
+
+    document.getElementById("btnCerrarMobile").addEventListener("click", function () {
+        const modal = document.getElementById("modalAgregar");
+
+        modal.classList.remove("show", "show-fullscreen");
+        modal.classList.add("fade");
+        modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        document.body.style.overflow = '';
+    });
+
+
     // Evento para agregar un nuevo set
     btnAgregarSet.addEventListener("click", function () {
         const setId = `set${nextSetNumber}`;
@@ -79,7 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <input type="number" class="form-control" placeholder="Repeticiones" min="1" name="Sets[${setId - 1}].Ejercicios[${ejercicioIndex}].Repeticiones" required />
+                    <input type="text" class="form-control input-repeticiones" placeholder="Ej: Repeticiones" name="Sets[${setId - 1}].Ejercicios[${ejercicioIndex}].Repeticiones" required />
+
                 </div>
                 <div class="col-md-2 text-end">
                     <button type="button" class="btn btn-sm btn-danger btnEliminarEjercicio">Eliminar</button>
@@ -114,7 +139,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
+function esDispositivoMovil() {
+    return window.innerWidth < 1024; // celulares y tablets en retrato
+}
 function limpiarModal() {
     document.getElementById("txtNombre").value = "";
     document.getElementById("txtDescripcion").value = "";
@@ -216,4 +243,40 @@ btnLimpiar.addEventListener("click", function () {
 
     buscarButton.click();
 
+});
+
+function esRepeticionValida(valor) {
+    const regexFijo = /^\d+$/;
+    const regexFallo = /^al fallo$/i;
+    const regexRango = /^\d+-\d+$/;
+    const regexDual = /^\d+\/\d+$/;
+    const regexCustom = /^(\d+,)*\d+$/;
+
+    return (
+        regexFijo.test(valor) ||
+        regexFallo.test(valor) ||
+        regexRango.test(valor) ||
+        regexDual.test(valor) ||
+        regexCustom.test(valor)
+    );
+}
+
+form.addEventListener("submit", function (event) {
+    const repInputs = form.querySelectorAll('.input-repeticiones');
+    let todoValido = true;
+
+    repInputs.forEach(input => {
+        const valor = input.value.trim();
+        if (!esRepeticionValida(valor)) {
+            input.classList.add("is-invalid");
+            todoValido = false;
+        } else {
+            input.classList.remove("is-invalid");
+        }
+    });
+
+    if (!todoValido) {
+        event.preventDefault();
+        alertaMensaje("warning", "Valida el formato en el que ingresaste las repeticiones. Ej: 10, 10-20, 10/10, al fallo")
+    }
 });

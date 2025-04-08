@@ -8,29 +8,56 @@ $(document).ready(() => {
         initialView: 'timeGridWeek', // Vista semanal con horas
         allDaySlot: false,
         locale: 'es',
-        slotMinTime: '05:00:00', 
-        slotMaxTime: '22:00:00', 
+        slotDuration: "00:30:00",
+        slotMinTime: "05:00:00",
+        slotMaxTime: "22:00:00",
         selectable: true, // Permite seleccionar horarios
         height: 'auto',
         timeZone: 'America/Santo_Domingo',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'timeGridWeek,timeGridDay'
+            right: "dayGridMonth,timeGridWeek,listWeek",
+
         },
         slotLabelFormat: {
             hour: 'numeric',
             minute: '2-digit',
             hour12: true 
         },
+        eventClick: function (info) {
+            // Evita que navegue si el evento tiene un href
+            info.jsEvent.preventDefault();
+
+            const nombreRutina = info.event.extendedProps.nombreRutina || 'Rutina';
+            const usuarios = info.event.title;
+
+            // Llena contenido del modal
+            document.getElementById('modal-titulo').innerText = nombreRutina;
+            document.getElementById('modal-detalles').innerText = usuarios;
+
+            // Muestra el modal
+            const modal = new bootstrap.Modal(document.getElementById('modalAsignacion'));
+            modal.show();
+        },
+
+        datesSet: function (info) {
+            mostrarCargador();
+
+            const startDate = info.startStr;
+            const endDate = info.endStr;
+
+            obtenerAsignaciones(startDate, endDate);
+        },
         
         dateClick: function (info) {
             abrirModalAsignar(info.dateStr);
         }
+
+
     });
 
     calendar.render();
-
 
     $('#ddlAgregarUsuario').select2({
         dropdownParent: $('#modalAsignar'),
@@ -184,8 +211,7 @@ function AsignarRutina() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                //    alertaRecargar('success', 'La asignación fue registrada correctamente.');
-                            alertaMensaje('warning', 'La asignación no pudo ser registrada, por favor intentalo más tarde.');
+                alertaRecargar('success', 'La asignación fue registrada correctamente.');
 
             } else {
                 alertaMensaje('warning', 'La asignación no pudo ser registrada, por favor intentalo más tarde.');
@@ -194,5 +220,23 @@ function AsignarRutina() {
         .catch(error => {
             console.error(`Error al registrar la asignación: ${error}`);
             ocultarCargador();
+        });
+}
+
+function obtenerAsignaciones(start, end) {
+    fetch(`${controller}/ObtenerAsignaciones?start=${start}&end=${end}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener asignaciones');
+            }
+            return response.json();
+        })
+        .then(eventos => {
+            calendar.removeAllEvents(); // Limpia eventos anteriores
+            calendar.addEventSource(eventos); // Agrega los nuevos
+            ocultarCargador();
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
 }

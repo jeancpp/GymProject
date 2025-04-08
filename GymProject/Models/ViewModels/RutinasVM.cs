@@ -32,7 +32,7 @@ namespace GymProject.Models.ViewModels
         [Required]
         public int IdEjercicio { get; set; }
         [Required]
-        public int Repeticiones { get; set; }
+        public string Repeticiones { get; set; }
     }
 
 }

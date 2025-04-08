@@ -1,4 +1,4 @@
-function mostrarCargador() {
+﻿function mostrarCargador() {
     Swal.fire({
         title: 'Cargando',
         text: 'Por favor espere',
@@ -45,7 +45,7 @@ function alertaRecargar(tipo, mensaje) {
         allowOutsideClick: false
     }).then((result) => {
         if (result.isConfirmed) {
-            location.reload(); // Recarga la p�gina cuando el usuario hace clic en "Aceptar"
+            location.reload(); // Recarga la página cuando el usuario hace clic en "Aceptar"
         }
     });
 }

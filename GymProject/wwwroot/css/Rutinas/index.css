@@ -125,3 +125,36 @@
     padding: 0.8rem 1.5rem;
 }
 
+@media (max-width: 1023px) {
+    #modalAgregar.show-fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 1055;
+        overflow-y: auto;
+        padding: 1rem;
+        display: block;
+    }
+
+    #modalAgregar .modal-dialog {
+        margin: 0;
+        max-width: 100%;
+        height: 100%;
+    }
+
+    #modalAgregar .modal-content {
+        height: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #modalAgregar .modal-body {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+}

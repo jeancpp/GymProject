@@ -19,7 +19,7 @@ namespace GymProject.Controllers
             this.rutinasRepository = rutinasRepository;
             this.asignacionesRepository = asignacionesRepository;
         }
-        public async Task <IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             var users = await userRepository.GetAll();
             var rutinas = await rutinasRepository.GetRutinas();
@@ -35,39 +35,73 @@ namespace GymProject.Controllers
         public async Task<ActionResult> ObtenerRutina([FromBody] int id)
         {
             var rutina = await rutinasRepository.GetAsync(id);
-            if(rutina == null)
+            if (rutina == null)
             {
                 return Json(new { success = false });
             }
-            return Json(new { success = true, rutina});
+            return Json(new { success = true, rutina });
         }
 
         [HttpPost]
         public async Task<ActionResult> GuardarAsignacion([FromBody] AsignacionVM asignacionVM)
         {
-            var asignacion = new AsignacionRutina
+            try
             {
-                IdRutina = asignacionVM.IdRutina,
-                Fecha = asignacionVM.Fecha
-            };
-
-            var usuariosSeleccionados = new List<IdentityUser>();
-
-            foreach (var id in asignacionVM.IdUsuarios)
-            {
-                var IdUsuario = Guid.Parse(id);
-                var usuarioexistente = await userRepository.GetAsyncUser(IdUsuario);
-
-                if (usuarioexistente != null)
+                foreach (var id in asignacionVM.IdUsuarios)
                 {
-                    usuariosSeleccionados.Add(usuarioexistente);
+                    var asignacion = new AsignacionRutina
+                    {
+                        IdRutina = asignacionVM.IdRutina,
+                        Fecha = asignacionVM.Fecha,
+                        IdUsuario = id.ToString(),
+                    };
+
+                    await asignacionesRepository.AddAsync(asignacion);
                 }
 
+                return Json(new { success = true });
             }
-            asignacion.Usuarios = usuariosSeleccionados;
-            var resultado = await asignacionesRepository.AddAsync(asignacion);
 
-            return Json(new { success = true });
+            catch (Exception ex)
+            {
+                return Json(new { success = true });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ObtenerAsignaciones(DateTime start, DateTime end)
+        {
+            var data = await asignacionesRepository.GetAsignacionesEntreFechasAsync(start, end);
+            var asignaciones = new List<AsignacionesVM>();
+
+            foreach (var id in data)
+            {
+                var user = await userRepository.GetAsyncUser(Guid.Parse(id.IdUsuario));
+
+                asignaciones.Add(new AsignacionesVM
+                {
+                    IdAsignacion = id.IdAsignacion,
+                    IdUsuario = Guid.Parse(id.IdUsuario),
+                    Fecha = id.Fecha,
+                    IdRutina = id.IdRutina,
+                    Username = user.UserName,
+                });
+
+                
+            }
+
+            var eventos = asignaciones
+            .GroupBy(a => new { a.Fecha, a.IdRutina })
+            .Select(g => new {
+                title = string.Join(", ", g.Select(x => x.Username)),
+                start = g.Key.Fecha.ToString("yyyy-MM-ddTHH:mm:ss"),
+                allDay = false,
+                nombreRutina = g.Key.IdRutina
+            });
+
+
+
+            return Json(eventos);
         }
     }
 }

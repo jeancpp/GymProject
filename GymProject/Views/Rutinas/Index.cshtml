@@ -69,7 +69,15 @@
                                                     {
                                                         <li class="d-flex justify-content-between align-items-center">
                                                             <span class="text-dark">@SetEjercicio.Ejercicio.Nombre</span>
-                                                            <small class="text-muted">@SetEjercicio.Repeticiones reps</small>
+                                                            @if (@SetEjercicio.Repeticiones == "Al fallo")
+                                                            {
+                                                                <small class="text-muted">@SetEjercicio.Repeticiones</small>
+                                                            }
+
+                                                            else
+                                                            {
+                                                                <small class="text-muted">@SetEjercicio.Repeticiones reps</small>
+                                                            }
                                                         </li>
                                                     }
                                                 </ul>
@@ -162,7 +170,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" id="btnCerrarMobile" aria-label="Close">Cancelar</button>
                             <button type="submit" class="btn btn-outline-primary">Guardar</button>
                         </div>
                     </form>
@@ -206,7 +214,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
 </main>
 
 
@@ -215,5 +223,6 @@
 </script>
 
 <script src="~/js/Rutinas/rutinas.js"></script>
-<script src="~/js/Rutinas/editarRutina.js"></script>
+<script src="~/js/Rutinas/rutinas.js"></script>
+<script src="~/js/common.js"></script>
 

@@ -20,7 +20,7 @@
     {
         public int IdEjercicio { get; set; }
         public string Nombre { get; set; }
-        public int Repeticiones { get; set; }
+        public string Repeticiones { get; set; }
     }
 
 }

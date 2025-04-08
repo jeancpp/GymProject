@@ -27,6 +27,8 @@ builder.Services.Configure<IdentityOptions>(options => {
      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ áéíóúÁÉÍÓÚñÑ";
 
 });
+builder.Services.AddSingleton<dbConnection>();
+
 builder.Services.AddScoped<ICategoriasRepository, CategoriasRepository>();
 builder.Services.AddScoped<IEjerciciosRepository, EjerciciosRepository>();
 builder.Services.AddScoped<IRutinasRepository, RutinasRepository>();

@@ -1,4 +1,4 @@
-$(document).ready(() => {
+ï»¿$(document).ready(() => {
 
     new DataTable('#tablaCategorias', {
         ordering: false,
@@ -26,7 +26,7 @@ function crearCategoria() {
     let Nombre = $('#txtNombre').val();
 
     if (Nombre === "") {
-        alertaMensaje("warning", "Debe ingresar el nombre de la categoría");
+        alertaMensaje("warning", "Debe ingresar el nombre de la categoria");
         return;
     }
 
@@ -36,18 +36,18 @@ function crearCategoria() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(Nombre) // Envía el string correctamente
+        body: JSON.stringify(Nombre) // EnvÃ­a el string correctamente
     })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alertaRecargar('success', 'La categoría ha sido registrada.');
+                alertaRecargar('success', 'La categoria ha sido registrada.');
             } else {
-                alertaMensaje('warning', 'La categoría ya se encuentra registrada.');
+                alertaMensaje('warning', 'La categoria ya se encuentra registrada.');
             }
         })
         .catch(error => {
-            console.error(`Error al registrar la categoría: ${error}`);
+            console.error(`Error al registrar la categorÃ­a: ${error}`);
             ocultarCargador();
         });
 }

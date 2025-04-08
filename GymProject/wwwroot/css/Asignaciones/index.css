@@ -6,6 +6,8 @@
     width: 100%;
     overflow-y: auto; /* Habilita el desplazamiento vertical si es necesario */
     transition: all 0.3s ease-in-out;
+    flex: 1;
+    padding: 20px;
 }
 
 
@@ -49,3 +51,32 @@
         #detalleRutina .list-unstyled li:last-child {
             border-bottom: none;
         }
+
+.fc-event-title {
+    font-size: 0.85rem;
+    
+}
+
+.fc-event {
+    padding: 4px 6px;
+    border-radius: 6px;
+    color: #025f6d;
+}
+
+.fc .fc-toolbar-title, .fc-col-header-cell-cushion, .fc-col-header-cell-cushion:hover {
+    color: #025f6d;
+}
+
+.fc-list-day-text, .fc-list-day-side-text, .fc-event:hover, .fc-list-day-text:hover, .fc-list-day-side-text:hover, .fc-daygrid-day-number{
+    color: #666666;
+}
+
+.fc-v-event {
+    background-color: #025f6d;
+    border-color: #025f6d;
+}
+
+
+.fc .fc-list-event-dot {
+    border-color: #666666;
+}

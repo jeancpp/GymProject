@@ -15,7 +15,7 @@ namespace GymProject.Models.Domain
         public int IdEjercicio { get; set; } 
 
         [Required]
-        public int Repeticiones { get; set; } 
+        public string Repeticiones { get; set; } 
 
         // Propiedades de navegación
         [ForeignKey("IdSet")]

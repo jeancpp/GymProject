@@ -3,7 +3,7 @@
     public class AsignacionVM
     {
         public int IdRutina { get; set; }
-        public string[] IdUsuarios { get; set; } = Array.Empty<string>();
+        public Guid[] IdUsuarios { get; set; } = Array.Empty<Guid>();
         public DateTime Fecha { get; set; }
     }
 }
